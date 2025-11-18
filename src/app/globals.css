@@ -1,0 +1,67 @@
+@import url('antd/dist/reset.css');
+/* Import Tailwind CSS */
+@import "tailwindcss";
+
+/* Colorful Layout Styles */
+:root {
+  --background-color: #f8f9fa;
+  --text-color: #2d3748;
+  --sider-text-color: #ffffff;
+  --card-background-color: #ffffff;
+  --sider-background-color: #4a90e2;
+  --selected-menu-item-background-color: #2962ff;
+  --header-background-color: #FFFFFF;
+  --sider-background-color: rgb(2, 78, 150);
+  --accent-color: #ed64a6;
+  --success-color: #38a169;
+  --warning-color: #ecc94b;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+/* Ant Design Overrides */
+.ant-layout-sider {
+  background-color: var(--sider-background-color) !important;
+}
+
+.ant-menu-dark.ant-menu-inline .ant-menu-item-selected {
+  background-color: var(--selected-menu-item-background-color) !important;
+}
+
+.ant-menu-light.ant-menu-inline .ant-menu-item-selected {
+  background-color: var(--selected-menu-item-background-color) !important; /* Changed to use colorful layout variable */
+}
+
+.ant-layout-header {
+  background-color: var(--header-background-color) !important;
+}
+
+.ant-drawer-content {
+  background-color: var(--sider-background-color) !important;
+}
+
+.ant-menu-light {
+  background-color: var(--sider-background-color) !important;
+  color: var(--sider-text-color) !important;
+}
+
+.ant-menu-light .ant-menu-item {
+  color: var(--sider-text-color) !important;
+}
+
+.ant-menu-light .ant-menu-item-selected {
+  color: var(--sider-text-color) !important; /* Changed to use colorful layout variable */
+}
+
+.ant-menu-light .ant-menu-item-selected .anticon {
+  color: var(--sider-text-color) !important; /* Changed to use colorful layout variable */
+}
+
+.ant-menu-light .ant-menu-item .anticon {
+  color: var(--sider-text-color) !important;
+}
