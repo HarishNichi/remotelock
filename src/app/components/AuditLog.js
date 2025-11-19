@@ -1,34 +1,36 @@
 import React from 'react';
-import { Table, Select, DatePicker, Button, Input, Space } from 'antd';
+import { Table, Select, DatePicker, Button, Input, Space, Row, Col } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
+import { useTranslation } from 'react-i18next';
 
 const { Option } = Select;
 const { RangePicker } = DatePicker;
 
 const AuditLog = () => {
+  const { t } = useTranslation();
   const columns = [
     {
-      title: 'Entity',
+      title: t('entity'),
       dataIndex: 'entity',
       key: 'entity',
     },
     {
-      title: 'Event',
+      title: t('event'),
       dataIndex: 'event',
       key: 'event',
     },
     {
-      title: 'Admin/User',
+      title: t('admin_user'),
       dataIndex: 'adminUser',
       key: 'adminUser',
     },
     {
-      title: 'Timestamp',
+      title: t('timestamp'),
       dataIndex: 'timestamp',
       key: 'timestamp',
     },
     {
-      title: 'Device',
+      title: t('device'),
       dataIndex: 'device',
       key: 'device',
     },
@@ -47,22 +49,32 @@ const AuditLog = () => {
 
   return (
     <div>
-      <h1>Audit Log Screen</h1>
-      <Space style={{ marginBottom: 16 }}>
-        <Select placeholder="Entity Type" style={{ width: 120 }}>
-          <Option value="qr">QR</Option>
-          <Option value="pin">PIN</Option>
-        </Select>
-        <Select placeholder="Event Type" style={{ width: 120 }}>
-          <Option value="created">Created</Option>
-          <Option value="used">Used</Option>
-          <Option value="revoked">Revoked</Option>
-        </Select>
-        <RangePicker />
-        <Button type="primary" icon={<DownloadOutlined />} onClick={handleExportCSV}>
-          Export CSV
-        </Button>
-      </Space>
+      <h1>{t('audit_log_screen')}</h1>
+      <div style={{ marginBottom: 16 }}>
+        <Row gutter={[16, 16]} align="middle">
+          <Col xs={24} sm={12} md={8} lg={6}>
+            <Select placeholder={t('entity_type')} style={{ width: '100%' }}>
+              <Option value="qr">{t('qr')}</Option>
+              <Option value="pin">{t('pin')}</Option>
+            </Select>
+          </Col>
+          <Col xs={24} sm={12} md={8} lg={6}>
+            <Select placeholder={t('event_type')} style={{ width: '100%' }}>
+              <Option value="created">{t('created')}</Option>
+              <Option value="used">{t('used')}</Option>
+              <Option value="revoked">{t('revoked')}</Option>
+            </Select>
+          </Col>
+          <Col xs={24} sm={12} md={8} lg={6}>
+            <RangePicker style={{ width: '100%' }} />
+          </Col>
+          <Col xs={24} sm={12} md={8} lg={6}>
+            <Button type="primary" icon={<DownloadOutlined />} onClick={handleExportCSV} style={{ width: '100%' }}>
+              {t('export_csv')}
+            </Button>
+          </Col>
+        </Row>
+      </div>
       <Table columns={columns} dataSource={data} scroll={{ x: 'max-content' }} />
     </div>
   );
